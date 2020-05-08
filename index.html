@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
   <script defer src="face-api.min.js"></script>
   <script defer src="script.js"></script>
-  <title>Face Recognition</title>
   <style>
-    body {
+    /* body {
       margin: 0;
       padding: 0;
       width: 100vw;
@@ -16,17 +16,55 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column
-    }
+    } */
 
     canvas {
       position: absolute;
-      top: 0;
-      left: 0;
     }
+
+    /* uncomment to hide video stream */
+    /*#video {
+      position: absolute;
+
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      border: 0;
+      padding: 0;
+
+      clip: rect(0 0 0 0);
+      overflow: hidden;
+    }*/
   </style>
 </head>
 <body>
-  <input type="file" id="imageUpload">
+  <section id="videosection">
+    <video id="video" width="720" height="560" autoplay muted></video>
+  </section>
+
+  <section>
+    <p>refresh untuk ganti foto pembanding</p>
+    <input type="text" name="urlInput" id="urlInput" placeholder="isi url foto pembanding">
+    <button type="submit" id="submit">Submit</button>
+  </section>
+  
+  <!-- The buttons to control the stream -->
+  <section id=buttonsection>
+    <p>Tunggu ada tulisan loaded dulu baru start streaming ya</p>
+    <div class="button-group">
+      <button id="start" type="button" class="button">Start Streaming</button>
+      <button id="stop" type="button" class="button">Stop Streaming</button>
+      <button id="capture" type="button" class="button">Capture</button>
+    </div>
+  </section>
+
+  <section id="capturedsection">
+    <div class="play-area-sub">
+      <h3>Hasil capture</h3>
+      <canvas id="captured" width="720" height="560"></canvas>
+      <div id="snapshot"></div>
+    </div>
+  </section>
+
 </body>
 </html>
